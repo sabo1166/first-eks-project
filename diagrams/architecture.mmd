@@ -1,0 +1,52 @@
+%% MG | Project 01 — Self-Managed Kubernetes on AWS EC2 (kubeadm)
+%% Editable source. Render: mmdc -i architecture.mmd -o architecture-mermaid.svg
+flowchart TB
+    user(["Client / Browser"])
+
+    subgraph aws["AWS Cloud — VPC"]
+        subgraph cluster["EC2-based Kubernetes cluster · kubeadm · v1.37.2"]
+            direction TB
+            subgraph cp["Control Plane · EC2 · 10.0.11.65"]
+                api["kube-apiserver :6443"]
+                sched["kube-scheduler"]
+                cm["kube-controller-manager"]
+                etcd[("etcd")]
+                api --- etcd
+                sched --> api
+                cm --> api
+            end
+
+            deploy["Deployment: nginx<br/>replicas: 2"]
+            svc["Service: nginx<br/>type NodePort · 32170 → 80"]
+
+            subgraph w1["Worker 01 · EC2 · 10.0.13.238"]
+                k1["kubelet + containerd"]
+                p1["nginx Pod #1"]
+            end
+            subgraph w2["Worker 02 · EC2 · 10.0.7.102"]
+                k2["kubelet + containerd"]
+                p2["nginx Pod #2"]
+            end
+
+            flannel{{"Flannel CNI · VXLAN overlay (UDP 8472)"}}
+        end
+    end
+
+    cm -. reconciles .-> deploy
+    deploy -->|manages| p1
+    deploy -->|manages| p2
+    api <--> k1
+    api <--> k2
+    w1 <-.-> flannel
+    w2 <-.-> flannel
+    user -->|"&lt;node IP&gt;:32170 (external access not yet verified)"| svc
+    svc --> p1
+    svc --> p2
+
+    classDef plane fill:#EAF2FF,stroke:#0B2A5B,color:#0B2A5B;
+    classDef worker fill:#E6FBFF,stroke:#0891B2,color:#0B2A5B;
+    classDef pod fill:#0EA5E9,stroke:#0B2A5B,color:#ffffff;
+    classDef k8s fill:#ffffff,stroke:#1D4ED8,color:#0B2A5B;
+    class api,sched,cm,etcd k8s;
+    class p1,p2 pod;
+    class deploy,svc k8s;

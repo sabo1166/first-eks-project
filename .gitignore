@@ -1,0 +1,7 @@
+*.pem
+*.key
+kubeconfig*
+admin.conf
+.env
+node_modules/
+linkedin/assets/frames/

@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" font-family="Inter, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="#E3EAF4" stroke-width="1"/>
+    </pattern>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#1D4ED8"/>
+    </marker>
+    <marker id="arrC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#0891B2"/>
+    </marker>
+    <marker id="arrN" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#0B2A5B"/>
+    </marker>
+    <filter id="sh" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0B2A5B" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1000" fill="#F7FAFD"/>
+  <rect width="1600" height="1000" fill="url(#grid)"/>
+
+  <!-- Header -->
+  <g>
+    <rect x="40" y="36" width="58" height="58" rx="12" fill="#0B2A5B"/>
+    <text x="69" y="74" text-anchor="middle" font-size="24" font-weight="800" fill="#22D3EE">MG</text>
+    <text x="116" y="56" font-size="13" font-weight="700" letter-spacing="2.5" fill="#1D4ED8">MG · KUBERNETES ENGINEERING SERIES · PROJECT 01</text>
+    <text x="116" y="88" font-size="28" font-weight="800" fill="#0B2A5B">Self-Managed Kubernetes on AWS EC2 with kubeadm</text>
+    <text x="116" y="114" font-size="15" fill="#475569">3 nodes · Amazon Linux 2023 · Kubernetes v1.37.2 · containerd · Flannel CNI</text>
+  </g>
+
+  <!-- Client -->
+  <g filter="url(#sh)">
+    <rect x="1330" y="36" width="230" height="74" rx="14" fill="#FFFFFF" stroke="#0B2A5B" stroke-width="1.5"/>
+    <rect x="1348" y="54" width="38" height="28" rx="4" fill="none" stroke="#0B2A5B" stroke-width="2"/>
+    <path d="M1360 88h14" stroke="#0B2A5B" stroke-width="2"/>
+    <text x="1398" y="68" font-size="16" font-weight="700" fill="#0B2A5B">Client / Browser</text>
+    <text x="1398" y="90" font-size="12.5" fill="#64748B">http://&lt;node-ip&gt;:32170</text>
+  </g>
+
+  <!-- AWS Cloud -->
+  <rect x="40" y="150" width="1520" height="800" rx="20" fill="#FFFFFF" fill-opacity="0.6" stroke="#0B2A5B" stroke-width="2"/>
+  <rect x="40" y="150" width="150" height="34" rx="10" fill="#0B2A5B"/>
+  <text x="115" y="173" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF">AWS Cloud</text>
+
+  <!-- VPC / cluster -->
+  <rect x="70" y="200" width="1460" height="725" rx="16" fill="none" stroke="#1D4ED8" stroke-width="1.6" stroke-dasharray="8 6"/>
+  <text x="92" y="228" font-size="13.5" font-weight="700" fill="#1D4ED8">VPC · EC2-based Kubernetes cluster (kubeadm) — not Amazon EKS</text>
+
+  <!-- Control plane -->
+  <g filter="url(#sh)">
+    <rect x="555" y="250" width="490" height="250" rx="16" fill="#EAF2FF" stroke="#0B2A5B" stroke-width="2"/>
+  </g>
+  <text x="577" y="282" font-size="18" font-weight="800" fill="#0B2A5B">Control Plane</text>
+  <text x="577" y="303" font-size="13" fill="#475569">EC2 · 10.0.11.65 · taint: control-plane:NoSchedule</text>
+  <g font-size="14" font-weight="600" fill="#0B2A5B">
+    <rect x="577" y="320" width="215" height="70" rx="10" fill="#FFFFFF" stroke="#1D4ED8"/>
+    <text x="595" y="350">API Server</text>
+    <text x="595" y="372" font-size="12" font-weight="400" fill="#64748B">kube-apiserver · :6443</text>
+    <rect x="808" y="320" width="215" height="70" rx="10" fill="#FFFFFF" stroke="#1D4ED8"/>
+    <text x="826" y="350">Scheduler</text>
+    <text x="826" y="372" font-size="12" font-weight="400" fill="#64748B">places Pods on nodes</text>
+    <rect x="577" y="404" width="215" height="70" rx="10" fill="#FFFFFF" stroke="#1D4ED8"/>
+    <text x="595" y="434">Controller Manager</text>
+    <text x="595" y="456" font-size="12" font-weight="400" fill="#64748B">reconciliation loops</text>
+    <rect x="808" y="404" width="215" height="70" rx="10" fill="#FFFFFF" stroke="#1D4ED8"/>
+    <text x="826" y="434">etcd</text>
+    <text x="826" y="456" font-size="12" font-weight="400" fill="#64748B">cluster state store</text>
+  </g>
+
+  <!-- Deployment -->
+  <g filter="url(#sh)">
+    <rect x="110" y="300" width="330" height="110" rx="14" fill="#FFFFFF" stroke="#1D4ED8" stroke-width="2"/>
+  </g>
+  <text x="132" y="332" font-size="12" font-weight="700" letter-spacing="1.5" fill="#1D4ED8">DEPLOYMENT</text>
+  <text x="132" y="360" font-size="20" font-weight="800" fill="#0B2A5B">nginx</text>
+  <text x="132" y="388" font-size="13.5" fill="#475569">replicas: 2 · 2/2 Available</text>
+
+  <!-- Service -->
+  <g filter="url(#sh)">
+    <rect x="1160" y="300" width="330" height="110" rx="14" fill="#0B2A5B"/>
+  </g>
+  <text x="1182" y="332" font-size="12" font-weight="700" letter-spacing="1.5" fill="#22D3EE">SERVICE · NODEPORT</text>
+  <text x="1182" y="360" font-size="20" font-weight="800" fill="#FFFFFF">nginx · 32170 → 80</text>
+  <text x="1182" y="388" font-size="13.5" fill="#BFDBFE">same port open on every node</text>
+
+  <!-- Workers -->
+  <g filter="url(#sh)">
+    <rect x="150" y="580" width="560" height="230" rx="16" fill="#E6FBFF" stroke="#0891B2" stroke-width="2"/>
+    <rect x="890" y="580" width="560" height="230" rx="16" fill="#E6FBFF" stroke="#0891B2" stroke-width="2"/>
+  </g>
+  <text x="172" y="612" font-size="18" font-weight="800" fill="#0B2A5B">Worker 01</text>
+  <text x="172" y="633" font-size="13" fill="#475569">EC2 · 10.0.13.238</text>
+  <text x="912" y="612" font-size="18" font-weight="800" fill="#0B2A5B">Worker 02</text>
+  <text x="912" y="633" font-size="13" fill="#475569">EC2 · 10.0.7.102</text>
+
+  <g font-size="13" fill="#0B2A5B">
+    <rect x="172" y="652" width="230" height="44" rx="8" fill="#FFFFFF" stroke="#94A3B8"/>
+    <text x="188" y="679">kubelet · containerd</text>
+    <rect x="172" y="706" width="230" height="44" rx="8" fill="#FFFFFF" stroke="#94A3B8"/>
+    <text x="188" y="733">kube-proxy · flannel</text>
+    <rect x="912" y="652" width="230" height="44" rx="8" fill="#FFFFFF" stroke="#94A3B8"/>
+    <text x="928" y="679">kubelet · containerd</text>
+    <rect x="912" y="706" width="230" height="44" rx="8" fill="#FFFFFF" stroke="#94A3B8"/>
+    <text x="928" y="733">kube-proxy · flannel</text>
+  </g>
+
+  <!-- Pods -->
+  <g filter="url(#sh)">
+    <rect x="430" y="652" width="250" height="98" rx="12" fill="#0EA5E9"/>
+    <rect x="1170" y="652" width="250" height="98" rx="12" fill="#0EA5E9"/>
+  </g>
+  <g fill="#FFFFFF">
+    <text x="452" y="684" font-size="12" font-weight="700" letter-spacing="1.5">POD · REPLICA 1</text>
+    <text x="452" y="712" font-size="20" font-weight="800">nginx</text>
+    <text x="452" y="736" font-size="12.5">Running · container :80</text>
+    <text x="1192" y="684" font-size="12" font-weight="700" letter-spacing="1.5">POD · REPLICA 2</text>
+    <text x="1192" y="712" font-size="20" font-weight="800">nginx</text>
+    <text x="1192" y="736" font-size="12.5">Running · container :80</text>
+  </g>
+  <text x="172" y="790" font-size="12" fill="#0891B2">Pod subnet assigned by Flannel</text>
+  <text x="912" y="790" font-size="12" fill="#0891B2">Pod subnet assigned by Flannel</text>
+
+  <!-- Flannel bar -->
+  <rect x="150" y="840" width="1300" height="56" rx="12" fill="#FFFFFF" stroke="#06B6D4" stroke-width="2"/>
+  <path d="M190 868h1220" stroke="#06B6D4" stroke-width="2" stroke-dasharray="3 7"/>
+  <rect x="560" y="850" width="480" height="36" rx="18" fill="#06B6D4"/>
+  <text x="800" y="874" text-anchor="middle" font-size="14.5" font-weight="700" fill="#FFFFFF">Flannel CNI · VXLAN overlay · UDP 8472</text>
+  <path d="M430 810v30M1170 810v30" stroke="#06B6D4" stroke-width="2"/>
+
+  <!-- API <-> kubelets (orthogonal) -->
+  <path d="M620 500 V 512 H 287 V 648" fill="none" stroke="#0B2A5B" stroke-width="1.6" marker-end="url(#arrN)" marker-start="url(#arrN)"/>
+  <path d="M980 500 V 512 H 1027 V 648" fill="none" stroke="#0B2A5B" stroke-width="1.6" marker-end="url(#arrN)" marker-start="url(#arrN)"/>
+  <text x="278" y="566" text-anchor="end" font-size="12" fill="#0B2A5B">API ↔ kubelet · :6443</text>
+
+  <!-- Controller manager -> Deployment -->
+  <path d="M577 439 L 444 392" fill="none" stroke="#1D4ED8" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#arr)"/>
+  <text x="458" y="452" font-size="12" fill="#1D4ED8">reconciles</text>
+
+  <!-- Deployment bus -> pods -->
+  <path d="M410 410 V 538 H 1230 V 648" fill="none" stroke="#1D4ED8" stroke-width="2.2" marker-end="url(#arr)"/>
+  <path d="M500 538 V 648" fill="none" stroke="#1D4ED8" stroke-width="2.2" marker-end="url(#arr)"/>
+  <circle cx="500" cy="538" r="4" fill="#1D4ED8"/>
+  <rect x="640" y="527" width="160" height="22" rx="11" fill="#FFFFFF"/>
+  <text x="720" y="542" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1D4ED8">manages 2 replicas</text>
+
+  <!-- Client -> Service -->
+  <path d="M1445 110 V 298" fill="none" stroke="#0891B2" stroke-width="2.4" stroke-dasharray="9 6" marker-end="url(#arrC)"/>
+  <rect x="1228" y="214" width="200" height="46" rx="8" fill="#FFF7ED" stroke="#F59E0B"/>
+  <text x="1240" y="234" font-size="12" font-weight="700" fill="#B45309">TCP 32170</text>
+  <text x="1240" y="251" font-size="11.5" fill="#B45309">external access not yet verified</text>
+
+  <!-- Service bus -> pods -->
+  <path d="M1250 410 V 562 H 620 V 648" fill="none" stroke="#0891B2" stroke-width="2.2" marker-end="url(#arrC)"/>
+  <path d="M1380 410 V 648" fill="none" stroke="#0891B2" stroke-width="2.2" marker-end="url(#arrC)"/>
+  <rect x="860" y="551" width="210" height="22" rx="11" fill="#FFFFFF"/>
+  <text x="965" y="566" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0891B2">routes to Pods (kube-proxy)</text>
+
+  <!-- Footer -->
+  <text x="40" y="980" font-size="12.5" fill="#64748B">github.com/sabo1166/first-eks-project</text>
+  <text x="1560" y="980" text-anchor="end" font-size="12.5" font-weight="600" fill="#0B2A5B">MG · Learning by building. Engineering through practice.</text>
+</svg>
